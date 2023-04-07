@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using themoviedbx.Models;
 using themoviedbx.Repositories;
 
@@ -12,9 +13,14 @@ namespace themoviedbx.ViewModels
 
         public DiscoverPageViewModel(APIRepository api, String genre)
 		{
-			Movies = new ObservableCollection<Movie>(api.GetMovies(genre));
-			this.Genre = genre;
-		}
+            this.Genre = genre;
+            Task.Run(() =>
+			{
+				var t = api.GetMoviesAsync(genre);
+                Movies = new ObservableCollection<Movie>(t.Result);
+
+            });
+        }
 	}
 }
 

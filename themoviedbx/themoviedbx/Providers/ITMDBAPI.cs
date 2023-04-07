@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Threading.Tasks;
+
 namespace themoviedbx.Providers
 {
 	public interface ITMDBAPI
 	{
-		String GetMovies (String genre);
-		String GetMovie (int MovieId);
-		String GetGenres();
+		Task<String> GetMovies (String genre);
+		Task<String> GetMovie (int MovieId);
+		Task<String> GetGenres();
 	}
 }
 

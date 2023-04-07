@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using themoviedbx.Providers;
 using themoviedbx.Repositories;
 using Xamarin.Forms;
@@ -12,7 +14,10 @@ namespace themoviedbx
         {
             InitializeComponent();
 
-            var provider = new MockTMDBAPI();
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            DependencyService.RegisterSingleton<HttpClient>(httpClient);
+            var provider = new TMDBAPI(httpClient);
             var api = new APIRepository(provider);
             DependencyService.RegisterSingleton<APIRepository>(api);
 

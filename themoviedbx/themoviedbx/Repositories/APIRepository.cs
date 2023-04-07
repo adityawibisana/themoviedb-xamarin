@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using themoviedbx.Models;
 using themoviedbx.Providers;
@@ -19,23 +20,23 @@ namespace themoviedbx.Repositories
 			setting.MissingMemberHandling = MissingMemberHandling.Ignore;
 		}
 
-		public List<Movie> GetMovies(String genre)
+		public async Task<List<Movie>> GetMoviesAsync(String genre)
 		{
-			var result = ApiProvider.GetMovies(genre);
+			var result = await ApiProvider.GetMovies(genre);
 			var discover = JsonConvert.DeserializeObject<Discover>(result, setting);
 			return discover.Movies;
         }
 
-		public List<Genre> GetGenres()
+		public async Task<List<Genre>> GetGenres()
 		{
-			var result = ApiProvider.GetGenres();
+			var result = await ApiProvider.GetGenres();
 			var genres = JsonConvert.DeserializeObject<Genres>(result, setting);
 			return genres.List;
 		}
 
-		public Movie GetMovie(int Id)
+		public async Task<Movie> GetMovieAsync(int Id)
 		{
-			var result = ApiProvider.GetMovie(Id);
+			var result = await ApiProvider.GetMovie(Id);
 			return JsonConvert.DeserializeObject<Movie>(result, setting);
 		}
 	}

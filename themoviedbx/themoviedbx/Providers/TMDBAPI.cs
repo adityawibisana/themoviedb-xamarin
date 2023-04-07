@@ -1,25 +1,48 @@
 ﻿using System;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Android.Gestures;
+using Newtonsoft.Json;
+
 namespace themoviedbx.Providers
 {
 	public class TMDBAPI : ITMDBAPI
 	{
-		public TMDBAPI()
+        const String apiKey = "fc2d3123db51dc904176fe0bfa8f6ff6";
+        const String baseUrl = "https://api.themoviedb.org/3";
+
+        HttpClient httpClient;
+        
+		public TMDBAPI(HttpClient httpClient)
 		{
-		}
+            this.httpClient = httpClient;
+        }
 
-        string ITMDBAPI.GetGenres()
+        async Task<String> ITMDBAPI.GetGenres()
+        {
+            var url = $"{baseUrl}/genre/movie/list?api_key={apiKey}";
+            var response = await httpClient.GetAsync(url);
+            var json = await response.Content.ReadAsStringAsync();
+            return await Task.FromResult(json);
+        }
+
+        async Task<String> ITMDBAPI.GetMovie(int MovieId)
         {
             throw new NotImplementedException();
         }
 
-        string ITMDBAPI.GetMovie(int MovieId)
+        async Task<String> ITMDBAPI.GetMovies(String genre)
         {
-            throw new NotImplementedException();
+            var url = $"{baseUrl}/discover/movie?api_key={apiKey}";
+            var response = await httpClient.GetAsync(url).ConfigureAwait(false);
+            return await response.Content.ReadAsStringAsync();
         }
 
-        string ITMDBAPI.GetMovies(String genre)
+        ~TMDBAPI()
         {
-            throw new NotImplementedException();
+            httpClient.Dispose();
         }
     }
 }
