@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="themoviedbx.MainPage">
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding Genres}">
+        <ListView ItemsSource="{Binding Genres}"
+                  ItemTapped="ListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

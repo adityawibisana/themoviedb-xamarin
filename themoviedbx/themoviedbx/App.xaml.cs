@@ -16,7 +16,7 @@ namespace themoviedbx
             var api = new APIRepository(provider);
             DependencyService.RegisterSingleton<APIRepository>(api);
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart ()
