@@ -9,14 +9,14 @@ namespace themoviedbx
 {	
 	public partial class DiscoverPage : ContentPage
 	{	
-		public DiscoverPage (String genre)
+		public DiscoverPage (Genre genre)
 		{
 			InitializeComponent ();
 
 			var repository = DependencyService.Resolve<APIRepository>();
 			BindingContext = new DiscoverPageViewModel(repository, genre);
 
-			Title = genre;
+			Title = genre.Name;
 		}
 
         public void ListView_ItemTapped(object sender, ItemTappedEventArgs e)

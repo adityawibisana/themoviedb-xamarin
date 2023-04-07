@@ -6,18 +6,33 @@ using themoviedbx.Providers;
 using Xamarin.Forms;
 using System.Windows.Input;
 using System.ComponentModel;
+using System.Threading.Tasks;
 
 namespace themoviedbx.ViewModels
 {
-	public class MainPageViewModel
+	public class MainPageViewModel : INotifyPropertyChanged
     {
-		public ObservableCollection<Genre> Genres { get; set; }
+        private ObservableCollection<Genre> _genres;
+		public ObservableCollection<Genre> Genres
+        {
+            get { return _genres; }
+            set
+            {
+                _genres = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Genres)));
+            }
+        }
 
         public MainPageViewModel(APIRepository api)
 		{
-			Genres = new ObservableCollection<Genre>(api.GetGenres());
+            Task.Run(() =>
+            {
+                var genres = api.GetGenres();
+                Genres = new ObservableCollection<Genre>(genres.Result);
+            });
 		}
-        
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
 
