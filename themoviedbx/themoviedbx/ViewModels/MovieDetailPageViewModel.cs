@@ -22,6 +22,17 @@ namespace themoviedbx.ViewModels
             }
         }
 
+        private ObservableCollection<Video> _videos;
+        public ObservableCollection<Video> Videos
+        {
+            get { return _videos; }
+            set
+            {
+                _videos = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Videos)));
+            }
+        }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -34,6 +45,21 @@ namespace themoviedbx.ViewModels
                 if (reviews.Result.Count > 0)
                 {
                     this.Reviews = new ObservableCollection<Review>(reviews.Result);
+                }
+            });
+            Task.Run(() =>
+            {
+                var videos = api.GetVideos(movie.Id);
+                if (videos.Result.Count > 0)
+                {
+                    var youtubeOnly = videos.Result.FindAll((t) =>
+                    {
+                        return t.Site.ToLower().Equals("youtube");
+                    });
+                    if (youtubeOnly.Count > 0)
+                    {
+                        this.Videos = new ObservableCollection<Video>(videos.Result);
+                    }
                 }
             });
         }

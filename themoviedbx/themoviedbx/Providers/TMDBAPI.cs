@@ -45,6 +45,12 @@ namespace themoviedbx.Providers
             return await getResult(url);
         }
 
+        async Task<String> ITMDBAPI.GetVideos(int movieId)
+        {
+            var url = $"{baseUrl}/movie/{movieId}/videos?api_key={apiKey}";
+            return await getResult(url);
+        }
+
         async Task<String> getResult(String url)
         {
             var response = await httpClient.GetAsync(url);

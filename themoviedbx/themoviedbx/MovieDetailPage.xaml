@@ -7,6 +7,7 @@
     x:Class="themoviedbx.MovieDetailPage">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
+            <Label Text="{Binding Videos[0].Key, StringFormat='https://www.youtube.com/watch?v={0}'}" />
             <Label Text="{Binding Movie.Overview}" />
             <Label Text="{Binding Reviews[0].Author}" />
             <Label Text="{Binding Reviews[0].Content}" />

@@ -9,6 +9,7 @@ namespace themoviedbx.Providers
 		Task<String> GetMovie (int MovieId);
 		Task<String> GetGenres();
 		Task<String> GetReviews(int MovieId);
+		Task<String> GetVideos(int MovieId);
 	}
 }
 
