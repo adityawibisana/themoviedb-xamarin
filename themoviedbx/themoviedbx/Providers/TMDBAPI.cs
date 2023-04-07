@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Android.Gestures;
+using Java.Net;
 using Newtonsoft.Json;
 
 namespace themoviedbx.Providers
@@ -23,19 +24,23 @@ namespace themoviedbx.Providers
         async Task<String> ITMDBAPI.GetGenres()
         {
             var url = $"{baseUrl}/genre/movie/list?api_key={apiKey}";
-            var response = await httpClient.GetAsync(url);
-            var json = await response.Content.ReadAsStringAsync();
-            return await Task.FromResult(json);
+            return await getResult(url);
         }
 
         async Task<String> ITMDBAPI.GetMovie(int MovieId)
         {
-            throw new NotImplementedException();
+            var url = $"{baseUrl}/movie/{MovieId}&api_key={apiKey}";
+            return await getResult(url);
         }
 
         async Task<String> ITMDBAPI.GetMovies(int genreId)
         {
             var url = $"{baseUrl}/discover/movie?with_genres={genreId}&api_key={apiKey}";
+            return await getResult(url);
+        }
+
+        async Task<String> getResult(String url)
+        {
             var response = await httpClient.GetAsync(url);
             var json = await response.Content.ReadAsStringAsync();
             return await Task.FromResult(json);
