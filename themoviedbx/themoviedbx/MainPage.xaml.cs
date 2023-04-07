@@ -26,7 +26,7 @@ namespace themoviedbx
         public void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var genre = e.Item as Genre;
-            Navigation.PushAsync(new DiscoverPage(genre.Name));
+            Navigation.PushAsync(new DiscoverPage(genre));
         }
     }
 }

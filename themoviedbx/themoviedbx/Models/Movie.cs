@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace themoviedbx.Models
@@ -52,6 +53,9 @@ namespace themoviedbx.Models
 
         [JsonProperty(PropertyName = "vote_count")]
         public int VoteCount { get; set; }
+
+        [JsonProperty(PropertyName = "genre_ids")]
+        public List<int> GenreIds { get; set; }
     }
 }
 

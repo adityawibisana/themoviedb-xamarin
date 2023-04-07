@@ -20,9 +20,9 @@ namespace themoviedbx.Repositories
 			setting.MissingMemberHandling = MissingMemberHandling.Ignore;
 		}
 
-		public async Task<List<Movie>> GetMoviesAsync(String genre)
+		public async Task<List<Movie>> GetMoviesAsync(int genreId)
 		{
-			var result = await ApiProvider.GetMovies(genre);
+			var result = await ApiProvider.GetMovies(genreId);
 			var discover = JsonConvert.DeserializeObject<Discover>(result, setting);
 			return discover.Movies;
         }

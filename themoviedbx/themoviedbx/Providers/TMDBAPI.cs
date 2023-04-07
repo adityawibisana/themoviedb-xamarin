@@ -33,11 +33,12 @@ namespace themoviedbx.Providers
             throw new NotImplementedException();
         }
 
-        async Task<String> ITMDBAPI.GetMovies(String genre)
+        async Task<String> ITMDBAPI.GetMovies(int genreId)
         {
-            var url = $"{baseUrl}/discover/movie?api_key={apiKey}";
-            var response = await httpClient.GetAsync(url).ConfigureAwait(false);
-            return await response.Content.ReadAsStringAsync();
+            var url = $"{baseUrl}/discover/movie?with_genres={genreId}&api_key={apiKey}";
+            var response = await httpClient.GetAsync(url);
+            var json = await response.Content.ReadAsStringAsync();
+            return await Task.FromResult(json);
         }
 
         ~TMDBAPI()
