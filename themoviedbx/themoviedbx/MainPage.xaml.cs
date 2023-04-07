@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace themoviedbx
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : TabbedPage
     {
         public MainPage()
         {
