@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using themoviedbx.Models;
 using themoviedbx.Repositories;
 using themoviedbx.Providers;
+using Xamarin.Forms;
 
 namespace themoviedbx.ViewModels
 {
@@ -10,12 +11,9 @@ namespace themoviedbx.ViewModels
 	{
 		public ObservableCollection<Movie> Movies { get; set; }
 
-		public MainPageViewModel()
+		public MainPageViewModel(APIRepository Api)
 		{
-			var provider = new MockTMDBAPI();
-			var api = new APIRepository(provider);
-			Movies = new ObservableCollection<Movie>(api.GetMovies());
-	
+			Movies = new ObservableCollection<Movie>(Api.GetMovies());
 		}
 	}
 }

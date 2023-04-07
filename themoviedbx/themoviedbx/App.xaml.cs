@@ -1,4 +1,6 @@
 ﻿using System;
+using themoviedbx.Providers;
+using themoviedbx.Repositories;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,6 +11,10 @@ namespace themoviedbx
         public App ()
         {
             InitializeComponent();
+
+            var provider = new MockTMDBAPI();
+            var api = new APIRepository(provider);
+            DependencyService.RegisterSingleton<APIRepository>(api);
 
             MainPage = new MainPage();
         }

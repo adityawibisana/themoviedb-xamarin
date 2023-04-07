@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using themoviedbx.Repositories;
+using themoviedbx.ViewModels;
 using Xamarin.Forms;
 
 namespace themoviedbx
@@ -10,6 +11,9 @@ namespace themoviedbx
 		public DiscoverPage ()
 		{
 			InitializeComponent ();
+
+			var repository = DependencyService.Resolve<APIRepository>();
+			BindingContext = new MainPageViewModel(repository);
 		}
 	}
 }
