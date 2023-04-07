@@ -12,7 +12,7 @@ namespace themoviedbx.ViewModels
 
         public DiscoverPageViewModel(APIRepository api, String genre)
 		{
-			Movies = new ObservableCollection<Movie>(api.GetMovies());
+			Movies = new ObservableCollection<Movie>(api.GetMovies(genre));
 			this.Genre = genre;
 		}
 	}

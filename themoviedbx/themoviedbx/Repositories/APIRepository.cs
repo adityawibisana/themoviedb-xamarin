@@ -19,9 +19,9 @@ namespace themoviedbx.Repositories
 			setting.MissingMemberHandling = MissingMemberHandling.Ignore;
 		}
 
-		public List<Movie> GetMovies()
+		public List<Movie> GetMovies(String genre)
 		{
-			var result = ApiProvider.GetMovies();
+			var result = ApiProvider.GetMovies(genre);
 			var discover = JsonConvert.DeserializeObject<Discover>(result, setting);
 			return discover.Movies;
         }

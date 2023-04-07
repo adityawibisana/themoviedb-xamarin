@@ -17,7 +17,7 @@ namespace themoviedbx.Providers
             throw new NotImplementedException();
         }
 
-        string ITMDBAPI.GetMovies()
+        string ITMDBAPI.GetMovies(String genre)
         {
             throw new NotImplementedException();
         }
