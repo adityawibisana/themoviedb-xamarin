@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:themoviedbx"
              x:Class="themoviedbx.MainPage">
-    <local:OfficialGenrePage Title="Official"></local:OfficialGenrePage>
-    <local:DiscoverPage Title="Discover"></local:DiscoverPage>
-</TabbedPage>
+    <ContentPage.Content>
+        <ListView ItemsSource="{Binding Genres}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding Name}" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
 

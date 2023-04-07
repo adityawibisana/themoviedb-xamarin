@@ -9,11 +9,11 @@ namespace themoviedbx.ViewModels
 {
 	public class MainPageViewModel
 	{
-		public ObservableCollection<Movie> Movies { get; set; }
+		public ObservableCollection<Genre> Genres { get; set; }
 
 		public MainPageViewModel(APIRepository Api)
 		{
-			Movies = new ObservableCollection<Movie>(Api.GetMovies());
+			Genres = new ObservableCollection<Genre>(Api.GetGenres());
 		}
 	}
 }
