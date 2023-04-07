@@ -7,6 +7,11 @@ namespace themoviedbx.Providers
 		{
 		}
 
+        string ITMDBAPI.GetGenres()
+        {
+            throw new NotImplementedException();
+        }
+
         string ITMDBAPI.GetMovie(int MovieId)
         {
             throw new NotImplementedException();

@@ -26,6 +26,13 @@ namespace themoviedbx.Repositories
 			return discover.Movies;
         }
 
+		public List<Genre> GetGenres()
+		{
+			var result = ApiProvider.GetGenres();
+			var genres = JsonConvert.DeserializeObject<Genres>(result, setting);
+			return genres.List;
+		}
+
 		public Movie GetMovie(int Id)
 		{
 			var result = ApiProvider.GetMovie(Id);

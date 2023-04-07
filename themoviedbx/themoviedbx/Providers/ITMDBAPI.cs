@@ -5,6 +5,7 @@ namespace themoviedbx.Providers
 	{
 		String GetMovies ();
 		String GetMovie (int MovieId);
+		String GetGenres();
 	}
 }
 
