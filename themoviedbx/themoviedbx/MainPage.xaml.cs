@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using themoviedbx.Models;
 using themoviedbx.Repositories;
 using themoviedbx.ViewModels;
 using Xamarin.Forms;
@@ -24,8 +25,8 @@ namespace themoviedbx
 
         public void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var x = e.Item;
-            Navigation.PushAsync(new DiscoverPage());
+            var genre = e.Item as Genre;
+            Navigation.PushAsync(new DiscoverPage(genre.Name));
         }
     }
 }

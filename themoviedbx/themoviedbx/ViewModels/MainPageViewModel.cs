@@ -13,9 +13,9 @@ namespace themoviedbx.ViewModels
     {
 		public ObservableCollection<Genre> Genres { get; set; }
 
-        public MainPageViewModel(APIRepository Api)
+        public MainPageViewModel(APIRepository api)
 		{
-			Genres = new ObservableCollection<Genre>(Api.GetGenres());
+			Genres = new ObservableCollection<Genre>(api.GetGenres());
 		}
         
     }
