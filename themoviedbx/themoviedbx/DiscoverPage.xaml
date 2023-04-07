@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="themoviedbx.DiscoverPage">
     <ContentPage.Content>
-        <ListView ItemsSource="{Binding Movies}">
+        <ListView ItemsSource="{Binding Movies}"
+                  ItemTapped="ListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Text="{Binding Title}" />

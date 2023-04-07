@@ -18,6 +18,12 @@ namespace themoviedbx
 
 			Title = genre;
 		}
-	}
+
+        public void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var movie = e.Item as Movie;
+            Navigation.PushAsync(new MovieDetailPage(movie));
+        }
+    }
 }
 
