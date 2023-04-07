@@ -3,7 +3,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:b="clr-namespace:themoviedbx.Behaviors"
-    x:Class="themoviedbx.DiscoverPage">
+    x:Class="themoviedbx.DiscoverPage"
+    Background="{DynamicResource Key=PageBackgroundColor}">
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Movies}"
                   ItemTapped="ListView_ItemTapped">
@@ -12,7 +13,12 @@
             </ListView.Behaviors> 
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Title}" />
+                    <ViewCell>
+                        <Label Text="{Binding Title}"
+                              TextColor="{DynamicResource SecondaryColor}"
+                              />
+                    </ViewCell>
+                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

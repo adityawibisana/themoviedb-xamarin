@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="themoviedbx.MainPage">
+             x:Class="themoviedbx.MainPage"
+             Title="Welcome! Select Movie Genre:"
+             Background="{DynamicResource Key=PageBackgroundColor}">
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Genres}"
                   ItemTapped="ListView_ItemTapped">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding Name}" />
+                        <Label Text="{Binding Name}"
+                               FontSize="Title"
+                               VerticalTextAlignment="Center"
+                               Padding="16,8,16,8"  />
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
