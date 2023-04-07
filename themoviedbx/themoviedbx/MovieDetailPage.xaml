@@ -2,10 +2,14 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:themoviedbx.ViewModels"
+    x:DataType="viewmodels:MovieDetailPageViewModel"
     x:Class="themoviedbx.MovieDetailPage">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <Label Text="{Binding Movie.Overview}" />
+            <Label Text="{Binding Reviews[0].Author}" />
+            <Label Text="{Binding Reviews[0].Content}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

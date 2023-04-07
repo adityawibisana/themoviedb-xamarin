@@ -39,6 +39,12 @@ namespace themoviedbx.Providers
             return await getResult(url);
         }
 
+        async Task<String> ITMDBAPI.GetReviews(int movieId)
+        {
+            var url = $"{baseUrl}/movie/{movieId}/reviews?api_key={apiKey}";
+            return await getResult(url);
+        }
+
         async Task<String> getResult(String url)
         {
             var response = await httpClient.GetAsync(url);

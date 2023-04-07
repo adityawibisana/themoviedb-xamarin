@@ -39,6 +39,13 @@ namespace themoviedbx.Repositories
 			var result = await ApiProvider.GetMovie(Id);
 			return JsonConvert.DeserializeObject<Movie>(result, setting);
 		}
+
+		public async Task<List<Review>> GetReviews(int movieId)
+		{
+			var result = await ApiProvider.GetReviews(movieId);
+			var results = JsonConvert.DeserializeObject<Reviews>(result);
+			return results.List;
+		}
 	}
 }
 
