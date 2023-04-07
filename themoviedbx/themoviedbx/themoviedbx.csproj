@@ -17,13 +17,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Repositories\" />
-    <None Remove="Services\" />
     <None Remove="Models\" />
     <None Remove="Behaviors\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
     <Folder Include="Models\" />
     <Folder Include="Behaviors\" />
   </ItemGroup>

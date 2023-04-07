@@ -33,9 +33,9 @@ namespace themoviedbx.Providers
             return await getResult(url);
         }
 
-        async Task<String> ITMDBAPI.GetMovies(int genreId)
+        async Task<String> ITMDBAPI.GetMovies(int genreId, int page)
         {
-            var url = $"{baseUrl}/discover/movie?with_genres={genreId}&api_key={apiKey}";
+            var url = $"{baseUrl}/discover/movie?with_genres={genreId}&page={page}&api_key={apiKey}";
             return await getResult(url);
         }
 
