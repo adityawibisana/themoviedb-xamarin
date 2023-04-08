@@ -5,24 +5,33 @@
     xmlns:viewmodels="clr-namespace:themoviedbx.ViewModels"
     x:DataType="viewmodels:MovieDetailPageViewModel"
     x:Class="themoviedbx.MovieDetailPage"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     Background="Black">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Orientation="Vertical" Margin="16">
+            <StackLayout Orientation="Vertical">
+                <ffimage:CachedImage
+                                Source="{Binding Movie.PosterPath, StringFormat='https://image.tmdb.org/t/p/w500/{0}'}"
+                                WidthRequest="100"
+                                HeightRequest="100"
+                                Aspect="AspectFill"
+                                />
+               <StackLayout Orientation="Vertical" Margin="16">
+                    <Label Text="Trailer" FontSize="Title" Padding="0,16,0,0"></Label>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Videos[0].Key, StringFormat='https://www.youtube.com/watch?v={0}'}" />
+                    </StackLayout>
 
-                <Label Text="Trailer" FontSize="Title"></Label>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding Videos[0].Key, StringFormat='https://www.youtube.com/watch?v={0}'}" />
+                    <Label Text="Overview" FontSize="Title" Padding="0,16,0,0"></Label>
+                    <Label Text="{Binding Movie.Overview}" HorizontalTextAlignment="Start" />
+
+
+                    <Label Text="Review" FontSize="Title" Padding="0,16,0,0"></Label>
+                    <Label Text="{Binding Reviews[0].Author}" FontSize="Subtitle"/>
+                    <Label Text="{Binding Reviews[0].Content}" Padding="0,0,0,16" />
                 </StackLayout>
-
-                <Label Text="Overview" FontSize="Title" Padding="0,16,0,0"></Label>
-                <Label Text="{Binding Movie.Overview}" HorizontalTextAlignment="Start" />
-
-
-                <Label Text="Review" FontSize="Title" Padding="0,16,0,0"></Label>
-                <Label Text="{Binding Reviews[0].Author}" FontSize="Subtitle"/>
-                <Label Text="{Binding Reviews[0].Content}" />
             </StackLayout>
+            
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
