@@ -4,14 +4,26 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:themoviedbx.ViewModels"
     x:DataType="viewmodels:MovieDetailPageViewModel"
-    x:Class="themoviedbx.MovieDetailPage">
+    x:Class="themoviedbx.MovieDetailPage"
+    Background="Black">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <Label Text="{Binding Videos[0].Key, StringFormat='https://www.youtube.com/watch?v={0}'}" />
-            <Label Text="{Binding Movie.Overview}" />
-            <Label Text="{Binding Reviews[0].Author}" />
-            <Label Text="{Binding Reviews[0].Content}" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" Margin="16">
+
+                <Label Text="Trailer" FontSize="Title"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Videos[0].Key, StringFormat='https://www.youtube.com/watch?v={0}'}" />
+                </StackLayout>
+
+                <Label Text="Overview" FontSize="Title" Padding="0,16,0,0"></Label>
+                <Label Text="{Binding Movie.Overview}" HorizontalTextAlignment="Start" />
+
+
+                <Label Text="Review" FontSize="Title" Padding="0,16,0,0"></Label>
+                <Label Text="{Binding Reviews[0].Author}" FontSize="Subtitle"/>
+                <Label Text="{Binding Reviews[0].Content}" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
 
