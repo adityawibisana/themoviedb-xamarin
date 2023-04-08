@@ -18,6 +18,9 @@
                         <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
                             <ffimage:CachedImage
                                 Source="{Binding PosterPath, StringFormat='https://image.tmdb.org/t/p/w500/{0}'}"
+                                WidthRequest="100"
+                                HeightRequest="100"
+                                Aspect="AspectFill"
                                 >
                             </ffimage:CachedImage>
                             <Label Text="{Binding Title}"
