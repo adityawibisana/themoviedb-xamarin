@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:b="clr-namespace:themoviedbx.Behaviors"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="themoviedbx.DiscoverPage"
     Background="Black">
     <ContentPage.Content>
@@ -15,8 +16,10 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
-                            <Image Source="{Binding PosterPath, StringFormat='https://image.tmdb.org/t/p/w500/{0}'}"
-                                   />
+                            <ffimage:CachedImage
+                                Source="{Binding PosterPath, StringFormat='https://image.tmdb.org/t/p/w500/{0}'}"
+                                >
+                            </ffimage:CachedImage>
                             <Label Text="{Binding Title}"
                                   TextColor="{DynamicResource SecondaryColor}"
                                    VerticalTextAlignment="Center"
