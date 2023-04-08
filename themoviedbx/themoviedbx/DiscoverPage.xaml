@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:b="clr-namespace:themoviedbx.Behaviors"
     x:Class="themoviedbx.DiscoverPage"
-    Background="{DynamicResource Key=PageBackgroundColor}">
+    Background="Black">
     <ContentPage.Content>
         <ListView ItemsSource="{Binding Movies}"
                   ItemTapped="ListView_ItemTapped">
@@ -14,9 +14,13 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding Title}"
-                              TextColor="{DynamicResource SecondaryColor}"
-                              />
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding PosterPath, StringFormat='https://image.tmdb.org/t/p/w500/{0}'}" />
+                            <Label Text="{Binding Title}"
+                                  TextColor="{DynamicResource SecondaryColor}"
+                                  />
+                        </StackLayout>
+                        
                     </ViewCell>
                     
                 </DataTemplate>
