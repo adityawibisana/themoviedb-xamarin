@@ -2,8 +2,10 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using themoviedbx.Models;
 using themoviedbx.Repositories;
+using Xamarin.Forms;
 
 namespace themoviedbx.ViewModels
 {
@@ -32,7 +34,15 @@ namespace themoviedbx.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Videos)));
             }
         }
-
+        private ICommand _trailerOpenCommand;
+        public ICommand TrailerOpenCommand {
+            get { return _trailerOpenCommand; }
+            set
+            {
+                _trailerOpenCommand = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(TrailerOpenCommand)));
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -59,12 +69,16 @@ namespace themoviedbx.ViewModels
                     if (youtubeOnly.Count > 0)
                     {
                         this.Videos = new ObservableCollection<Video>(videos.Result);
+                        TrailerOpenCommand = new Command(() =>
+                        {
+                            var url = $"https://www.youtube.com/watch?v={youtubeOnly[0].Key}";
+                            Application.Current.MainPage.Navigation.PushAsync(new WebViewPage(url));
+                        });
                     }
                 }
             });
+            
         }
-
-        
     }
 }
 
