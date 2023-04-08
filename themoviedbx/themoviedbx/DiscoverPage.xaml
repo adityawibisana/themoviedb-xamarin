@@ -14,10 +14,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" Padding="16,8,16,8">
                             <Image Source="{Binding PosterPath, StringFormat='https://image.tmdb.org/t/p/w500/{0}'}" />
                             <Label Text="{Binding Title}"
                                   TextColor="{DynamicResource SecondaryColor}"
+                                   VerticalTextAlignment="Center"
                                   />
                         </StackLayout>
                         
