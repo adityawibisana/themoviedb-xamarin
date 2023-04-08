@@ -1,5 +1,14 @@
 # TMDB App Using Xamarin
 
+## Screenshots:
+<div style="display: flex; justify-content: space-between;">
+  <img src="https://github.com/adityawibisana/themoviedb-xamarin/blob/main/gitresources/1.png" alt="Image Description" width="200" >
+  <img src="https://github.com/adityawibisana/themoviedb-xamarin/blob/main/gitresources/2.png" alt="Image Description" width="200" >
+  <img src="https://github.com/adityawibisana/themoviedb-xamarin/blob/main/gitresources/3.png" alt="Image Description" width="200" >
+  <img src="https://github.com/adityawibisana/themoviedb-xamarin/blob/main/gitresources/4.png" alt="Image Description" width="200" >
+</div>
+
+
 ## Description:
 Xamarin Forms application to show list of movies, using TMDB API. Features:
 1. Infinite scroll
